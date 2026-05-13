@@ -1,0 +1,223 @@
+# IT Translator - Переводчик IT-терминов с русского на английский
+
+class ITTranslator:
+    """Переводчик компьютерных терминов и слов с русского на английский"""
+    
+    def __init__(self):
+        # Словарь IT-терминов
+        self.dictionary = {
+            'программа': 'program',
+            'код': 'code',
+            'компьютер': 'computer',
+            'данные': 'data',
+            'база данных': 'database',
+            'сеть': 'network',
+            'алгоритм': 'algorithm',
+            'переменная': 'variable',
+            'функция': 'function',
+            'класс': 'class',
+            'объект': 'object',
+            'операционная система': 'operating system',
+            'процессор': 'processor',
+            'память': 'memory',
+            'жёсткий диск': 'hard drive',
+            'интерфейс': 'interface',
+            'программист': 'programmer',
+            'тестирование': 'testing',
+            'отладка': 'debugging',
+            'компиляция': 'compilation',
+            'интерпретация': 'interpretation',
+            'кибербезопасность': 'cybersecurity',
+            'шифрование': 'encryption',
+            'облако': 'cloud',
+            'облачные вычисления': 'cloud computing',
+            'искусственный интеллект': 'artificial intelligence',
+            'машинное обучение': 'machine learning',
+            'глубокое обучение': 'deep learning',
+            'сервер': 'server',
+            'клиент': 'client',
+            'протокол': 'protocol',
+            'браузер': 'browser',
+            'веб-сайт': 'website',
+            'приложение': 'application',
+            'библиотека': 'library',
+            'фреймворк': 'framework',
+            'язык программирования': 'programming language',
+            'синтаксис': 'syntax',
+            'ошибка': 'error',
+            'баг': 'bug',
+            'версия': 'version',
+            'обновление': 'update',
+            'лицензия': 'license',
+            'исходный код': 'source code',
+            'бинарный код': 'binary code',
+            'биты': 'bits',
+            'байты': 'bytes',
+            'килобайт': 'kilobyte',
+            'мегабайт': 'megabyte',
+            'гигабайт': 'gigabyte',
+            'скорость интернета': 'internet speed',
+            'пропускная способность': 'bandwidth',
+            'задержка': 'latency',
+            'пакет данных': 'data packet',
+            'маршрутизатор': 'router',
+            'файрвол': 'firewall',
+            'прокси': 'proxy',
+            'виртуальная машина': 'virtual machine',
+            'контейнер': 'container',
+            'база данных': 'database',
+            'запрос': 'query',
+            'индекс': 'index',
+            'таблица': 'table',
+            'строка': 'row',
+            'столбец': 'column',
+            'ключ': 'key',
+            'кэш': 'cache',
+            'буфер': 'buffer',
+            'стек': 'stack',
+            'очередь': 'queue',
+            'связанный список': 'linked list',
+            'граф': 'graph',
+            'дерево': 'tree',
+            'сортировка': 'sorting',
+            'поиск': 'search',
+            'система контроля версий': 'version control system',
+            'гит': 'git',
+            'репозиторий': 'repository',
+            'коммит': 'commit',
+            'ветка': 'branch',
+            'слияние': 'merge',
+            'конфликт': 'conflict',
+            'запрос на слияние': 'pull request',
+            'задача': 'issue',
+            'вики': 'wiki',
+            'документация': 'documentation',
+            'комментарий': 'comment',
+            'строка кода': 'line of code',
+            'блок кода': 'code block',
+            'цикл': 'loop',
+            'условие': 'condition',
+            'оператор': 'operator',
+            'выражение': 'expression',
+            'инстру��ция': 'statement',
+            'возвращаемое значение': 'return value',
+            'параметр': 'parameter',
+            'аргумент': 'argument',
+            'метод': 'method',
+            'свойство': 'property',
+            'наследование': 'inheritance',
+            'полиморфизм': 'polymorphism',
+            'инкапсуляция': 'encapsulation',
+            'абстракция': 'abstraction',
+        }
+    
+    def translate(self, word):
+        """Переводит слово с русского на английский"""
+        word_lower = word.lower().strip()
+        if word_lower in self.dictionary:
+            return self.dictionary[word_lower]
+        return f"❌ Слово '{word}' не найдено в словаре"
+    
+    def translate_text(self, text):
+        """Переводит текст (разделённый пробелами)"""
+        words = text.split()
+        translated = []
+        for word in words:
+            result = self.translate(word)
+            translated.append(result)
+        return " ".join(translated)
+    
+    def search_by_english(self, english_word):
+        """Поиск русского слова по английскому"""
+        english_word = english_word.lower().strip()
+        for rus, eng in self.dictionary.items():
+            if eng == english_word:
+                return rus
+        return f"❌ Слово '{english_word}' не найдено"
+    
+    def get_dictionary(self):
+        """Возвращает весь словарь"""
+        return self.dictionary
+    
+    def show_all_words(self):
+        """Выводит все слова в словаре"""
+        print("\n📚 ПОЛНЫЙ СЛОВАРЬ IT-ТЕРМИНОВ (Русский → Английский)\n")
+        print("-" * 60)
+        for i, (rus, eng) in enumerate(sorted(self.dictionary.items()), 1):
+            print(f"{i:2d}. {rus:<30} → {eng}")
+        print("-" * 60)
+        print(f"Всего слов в словаре: {len(self.dictionary)}\n")
+    
+    def add_word(self, russian_word, english_word):
+        """Добавляет новое слово в словарь"""
+        self.dictionary[russian_word.lower()] = english_word.lower()
+        print(f"✅ Слово добавлено: {russian_word} → {english_word}")
+    
+    def remove_word(self, russian_word):
+        """Удаляет слово из словаря"""
+        if russian_word.lower() in self.dictionary:
+            del self.dictionary[russian_word.lower()]
+            print(f"✅ Слово удалено: {russian_word}")
+        else:
+            print(f"❌ Слово '{russian_word}' не найдено")
+
+
+# ============= ИНТЕРАКТИВНОЕ МЕНЮ =============
+
+def main():
+    translator = ITTranslator()
+    
+    print("\n" + "="*60)
+    print("   🖥️  IT TRANSLATOR - Переводчик IT-терминов")
+    print("   Русский → Английский")
+    print("="*60)
+    
+    while True:
+        print("\n📋 МЕНЮ:")
+        print("1️⃣  Перевести одно слово")
+        print("2️⃣  Перевести текст (несколько слов)")
+        print("3️⃣  Найти русское слово по английскому")
+        print("4️⃣  Показать весь словарь")
+        print("5️⃣  Добавить новое слово")
+        print("6️⃣  Удалить слово")
+        print("7️⃣  Выход")
+        
+        choice = input("\n👉 Выберите опцию (1-7): ").strip()
+        
+        if choice == '1':
+            word = input("Введите слово на русском: ")
+            result = translator.translate(word)
+            print(f"✨ Перевод: {result}")
+        
+        elif choice == '2':
+            text = input("Введите текст (слова через пробел): ")
+            result = translator.translate_text(text)
+            print(f"✨ Перевод: {result}")
+        
+        elif choice == '3':
+            english = input("Введите слово на английском: ")
+            result = translator.search_by_english(english)
+            print(f"✨ Русское слово: {result}")
+        
+        elif choice == '4':
+            translator.show_all_words()
+        
+        elif choice == '5':
+            rus = input("Введите слово на русском: ")
+            eng = input("Введите перевод на английском: ")
+            translator.add_word(rus, eng)
+        
+        elif choice == '6':
+            word = input("Введите слово для удаления: ")
+            translator.remove_word(word)
+        
+        elif choice == '7':
+            print("\n👋 До свидания! Спасибо за использование IT Translator!\n")
+            break
+        
+        else:
+            print("❌ Неверный выбор. Попробуйте снова.")
+
+
+if __name__ == "__main__":
+    main()
